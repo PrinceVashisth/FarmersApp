@@ -12,18 +12,16 @@ import * as Speech from "expo-speech";
 import moment from "moment";
 import { FontAwesome } from "@expo/vector-icons";
 const Card = ({ props }) => {
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const dateTimeAgo = moment(props.createdAt).fromNow();
   const [language, setLanguage] = useState("english");
-
   useEffect(() => {
     const voiceOptions = async () => {
-      await Speech.getAvailableVoicesAsync();
+     const res =  await Speech.getAvailableVoicesAsync();
     };
     voiceOptions();
   }, []);
   const handleSpeak = () => {
-    Speech.speak(language === "english" ? props.EngText : props.HindiText);
+    Speech.speak(language === "english" ? props.EngText : props.HindiText,{ language:"hi-IN"});
   };
 
   const toggleLanguage = () => {
