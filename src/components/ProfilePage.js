@@ -1,40 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   StyleSheet,
   TextInput,
+  Alert,
 } from "react-native";
-import * as ImagePicker from "expo-image-picker";
-import firebase from "../firebase/config";
 import axios from "axios";
 import Posts from "./Posts";
-
+import { Feather } from '@expo/vector-icons';
 const ProfilePage = ({ user }) => {
-  const [posts, setposts] = useState({});
   const [text, setText] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // fetch all posts
-      const resp = await axios.get(
-        `https://farmerspost-production.up.railway.app/api/upload/userposts/${user.id}`
-      );
-      setposts(resp.data);
-    };
-    // fetchData();
-  }, []);
-
+ 
   const submitBtnText = async () => {
+    if(text.length===0){
+       console.log("Not Creating Post.......");
+    }else{
+   const data = {
+    text:text,
+    id:user.id,
+    state:user.state
+   }
+    setText("");
     const res = await axios.post(
-      `https://farmerspost-production.up.railway.app/api/upload/${user.id}/${user.state}/${text}`
+      `https://farmersposts-production.up.railway.app/api/upload/`,data
     );
-    console.log(res);
-    //  we have to reload window
-    // window.NavigationPreloadManager();
+    }
   };
+
+const DeleteAllHandeller=async()=>{
+  try {
+    await axios.delete(`https://farmersposts-production.up.railway.app/api/upload/deleteAll/${user.id}`)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
   return (
     <View>
       <View style={styles.Box}>
@@ -55,11 +58,11 @@ const ProfilePage = ({ user }) => {
           <Text style={styles.submitBtnText}> Submit </Text>
         </TouchableOpacity>
       </View>
-      {/* {posts
-        ? posts.map((e) => {
-            <Posts key={e.id} post={e} />;
-          })
-        : null} */}
+      <TouchableOpacity style={styles.DeleteAll} onPress={DeleteAllHandeller}>
+       <Text style={{color:"#ffffff"}}>Delete All</Text>
+       <Feather name="delete" size={24} color="white" />
+      </TouchableOpacity>
+      <Posts user={user} active={true} />      
     </View>
   );
 };
@@ -75,11 +78,6 @@ const styles = StyleSheet.create({
   heading: {
     color: "white",
     fontSize: 30,
-    marginBottom: 10,
-  },
-  image: {
-    width: 200,
-    height: 200,
     marginBottom: 10,
   },
   button: {
@@ -105,6 +103,21 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
+  DeleteAll:{
+    flexDirection:'row',
+    marginLeft:'auto',
+    marginRight:20,
+    alignItems:'center',
+    marginVertical:10,
+    backgroundColor:'red',
+    width:150,
+    height:40,
+    justifyContent:'space-around',
+    borderRadius:10,
+    borderColor:'grey',
+    borderWidth:3
+  },
+
 });
 
 export default ProfilePage;

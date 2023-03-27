@@ -55,7 +55,7 @@ export default function ContactsPage({ navigation, user }) {
 
   return (
     <ImageBackground
-      style={{ zIndex: 1000, height: "100%" }}
+      style={{ zIndex: 1000, height: "100%",width:'100%' }}
       source={require("../../../assets/contactBack.jpeg")}
     >
       <SafeAreaView style={styles.container}>
@@ -63,12 +63,13 @@ export default function ContactsPage({ navigation, user }) {
           <Icon
             name="arrow-back"
             size={30}
+            color="white"
             onPress={() => navigation.goBack()}
           />
           <Text style={styles.title}>
             {user.fullName.length > 10
               ? user.fullName.substring(0, 10) + "..."
-              : "user.fullName"}
+              : user.fullName}
           </Text>
         </View>
         <View>

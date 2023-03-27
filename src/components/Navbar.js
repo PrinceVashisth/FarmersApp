@@ -29,12 +29,8 @@ const Navbar = ({ user, setUser, navigation }) => {
       <View style={Toggle ? styles.Visible : styles.Hide}>
         <View style={styles.content}>
           <View style={styles.parentComponent}>
-            {/* <TouchableOpacity
-              style={styles.styledBtn}
-              onPress={() => navigation.navigate("Home")}
-            >
-              <Text style={styles.btnText}>Home</Text>
-            </TouchableOpacity> */}
+{ user.isFarmer &&
+  <>
             <TouchableOpacity
               style={styles.styledBtn}
               onPress={() => navigation.navigate("Profile")}
@@ -49,6 +45,8 @@ const Navbar = ({ user, setUser, navigation }) => {
             >
               <Text style={styles.btnText}>Schemes for Farmers</Text>
             </TouchableOpacity>
+            </>     
+          }
             <TouchableOpacity
               style={styles.styledBtn}
               onPress={() => navigation.navigate("Contacts")}

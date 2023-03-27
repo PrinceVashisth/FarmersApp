@@ -94,18 +94,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 20,
+    
   },
   textContainer: {
     flex: 1,
     padding: 10,
   },
   title: {
-    fontSize: 12,
+    fontSize: 14,
     color: "#888",
     marginBottom: 10,
   },
   link: {
-    fontSize: 16,
+    fontSize: 12,
     color: "blue",
     marginBottom: 10,
   },
@@ -130,6 +131,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+  time:{
+    color:'grey'
+  }
 });
 
 export default Card;

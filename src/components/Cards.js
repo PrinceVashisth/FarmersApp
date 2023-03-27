@@ -11,13 +11,13 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
 
-const Cards = () => {
+const Cards = ({user}) => {
   const [Data, setData] = useState({});
   const [state, setstate] = useState(false);
   useEffect(() => {
     const GetPosts = async () => {
       const res = await axios.get(
-        `https://newsapi-production.up.railway.app/api/Posts/getPosts/Rajasthan`
+        `https://newsapi-production.up.railway.app/api/Posts/getPosts/${user.state}`
       );
       setData(res.data);
       setstate(true);

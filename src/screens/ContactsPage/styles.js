@@ -9,13 +9,13 @@ export default StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     height: 60,
-    backgroundColor: "#a3c2c2",
+    backgroundColor: "#575972",
     width: "100%",
     paddingLeft: 10,
   },
   title: {
     fontSize: 20,
-    color: "#804000",
+    color: "#fff",
     paddingLeft: 20,
   },
   button: {
