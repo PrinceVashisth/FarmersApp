@@ -17,7 +17,7 @@ const Posts = ({user , active}) => {
           ):await axios.get(
             `https://farmersposts-production.up.railway.app/api/upload/${user.state}`
           );
-          setposts(resp.data);
+          setposts(resp.data.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)));
           setstate(true);
         };
         fetchData();

@@ -19,7 +19,7 @@ const Cards = ({user}) => {
       const res = await axios.get(
         `https://newsapi-production.up.railway.app/api/Posts/getPosts/${user.state}`
       );
-      setData(res.data);
+      setData(res.data.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)));
       setstate(true);
     };
     GetPosts();
