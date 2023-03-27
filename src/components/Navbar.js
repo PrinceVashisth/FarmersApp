@@ -13,9 +13,7 @@ const Navbar = ({ user, setUser, navigation }) => {
       <View style={styles.navBox}>
         <Image
           style={{ ...styles.logo, zIndex: 1000 }}
-          source={{
-            uri: "https://picsum.photos/50/50",
-          }}
+          source={require('../../assets/logoImg.jpg')}
         />
         <Text style={styles.textLogo}>Kisan Mitra</Text>
         <TouchableOpacity
@@ -103,9 +101,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 50,
-    height: 45,
+    height: 50,
     borderRadius: 50,
-    backgroundColor: "red",
   },
   Visible: {
     position: "absolute",
