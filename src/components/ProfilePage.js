@@ -15,12 +15,13 @@ const ProfilePage = ({ user }) => {
  
   const submitBtnText = async () => {
     if(text.length===0){
-       console.log("Not Creating Post.......");
+       console.log("Not Creating Post.................");
     }else{
    const data = {
     text:text,
     id:user.id,
-    state:user.state
+    state:user.state,
+    name:user.fullName
    }
     setText("");
     const res = await axios.post(

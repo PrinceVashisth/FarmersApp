@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "KisanHiteshi",
-    "slug": "KisanHiteshi",
-    "version": "1.0.0",
+    "slug": "kisanhiteshi",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/logoImg.jpg",
     "userInterfaceStyle": "light",
@@ -29,8 +29,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "a45fb27a-c9e9-4427-917d-4e757d20779d"
+        "projectId": "2d81c81f-6267-4357-8746-62156552c876"
       }
-    }
+    },
+    "owner": "vashisthprince123"
   }
 }

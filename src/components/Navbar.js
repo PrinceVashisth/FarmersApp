@@ -13,7 +13,7 @@ const Navbar = ({ user, setUser, navigation }) => {
       <View style={styles.navBox}>
         <Image
           style={{ ...styles.logo, zIndex: 1000 }}
-          source={require('../../assets/logoImg.jpg')}
+          source={require('../../assets/logoImg.jpg')} 
         />
         <Text style={styles.textLogo}>Kisan Mitra</Text>
         <TouchableOpacity

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 import moment from "moment";
 import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
-const Post = ({ props ,user , }) => {
+const Post = ({ props ,user }) => {
+
   const dateTimeAgo = moment(props.createdAt).fromNow();
-// console.log(user);
 const PostDelete = async()=>{
      try {
       await axios.delete(`https://farmersposts-production.up.railway.app/api/upload/${props._id}`); 
@@ -16,7 +16,7 @@ const PostDelete = async()=>{
   return (
     <View style={styles.container}>
        <View style={styles.PostHeader}>
-           <Text style={styles.text}>{user.fullName}</Text> 
+           <Text style={styles.text}>{props.name}</Text> 
           {user.id===props.uid && <AntDesign name="delete" size={24} color="red" onPress={PostDelete}/>}
        </View>
 
